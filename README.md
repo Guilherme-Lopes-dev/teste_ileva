@@ -23,8 +23,4 @@ exclua as pessoas e os contatos.
 
 # 3. Front-end da lista de contatos
 Crie um aplicativo Web que explore a API criada na segunda atribuição. O design da interface
-<<<<<<< HEAD
 do usuário é totalmente até você. 
-=======
-do usuário é totalmente até você. 
->>>>>>> 932f67ab81d5326307821ac78e71f59d5e453875
