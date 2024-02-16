@@ -12,8 +12,7 @@
 */
 
 $app = require __DIR__.'/../bootstrap/app.php';
-include_once __DIR__ . '../db_config.php';
-
+include_once __DIR__ . '/db_config.php';
 /*
 |--------------------------------------------------------------------------
 | Run The Application
