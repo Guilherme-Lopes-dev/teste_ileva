@@ -4,7 +4,7 @@ $dbUrl = getenv("CLEARDB_DATABASE_URL");
 if (empty($dbUrl)) {
     // Se a variável de ambiente não estiver disponível, você está localmente
     // Configure manualmente as configurações do banco de dados localmente
-    $dbUrl = "mysql://seu_usuario:seu_senha@localhost/seu_banco_de_dados";
+    $dbUrl = "mysql://bd71fb312c2cf1:6208da57@us-cluster-east-01.k8s.cleardb.net/heroku_8926797d9d59cea?reconnect=true";
 }
 
 $dbParams = parse_url($dbUrl);
