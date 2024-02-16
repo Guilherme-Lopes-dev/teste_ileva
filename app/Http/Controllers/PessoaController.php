@@ -76,6 +76,14 @@ class PessoaController extends Controller {
         return redirect()->route('home');
     }
 
+    public function pesquisar(Request $request) {
+        $nome = $request->input('busca');
+    
+        $pessoas = $this->pessoaModel->whereRaw('LOWER(nome) LIKE ?', ['%' . strtolower($nome) . '%'])->get();
+    
+        return view('home', ['pessoas' => $pessoas]);
+    }
+
     function validarSequenciaColchetes(Request $request) {
 
         $sequencia = $request->sequencia;

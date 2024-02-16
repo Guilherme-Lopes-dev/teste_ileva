@@ -21,6 +21,7 @@ $router->get('/home', ['uses' => 'PessoaController@show', 'as' => 'home']);
 $router->post('/salvar', 'PessoaController@salvar');
 $router->post('/atualizar/{id}', 'PessoaController@atualizar');
 $router->post('/excluir/{id}', 'PessoaController@excluir');
+$router->post('/pesquisar', 'PessoaController@pesquisar');
 $router->post('/validar', 'PessoaController@validarSequenciaColchetes');
 
 
