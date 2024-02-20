@@ -83,6 +83,8 @@ class PessoaController extends Controller {
                     echo "<script>alert('Insira um telefone !');</script>";
                     break;
                 }
+                echo "<script>alert('Telefone cadastrado com sucesso.');</script>";
+
                 $this->atualizarContato(Telefone::class, 'telefone', $request->input('telefone'), $pessoa->id);
                 break;
             case 'editar_telefone':
@@ -106,6 +108,8 @@ class PessoaController extends Controller {
                 $telefone = Telefone::find($telefoneId);
                 if ($telefone) {
                     $telefone->delete();
+                    echo "<script>alert('Telefone deletado com sucesso.');</script>";
+
                 } else {
                     echo "<script>alert('Telefone não encontrado.');</script>";
                 }
@@ -115,6 +119,7 @@ class PessoaController extends Controller {
                 $whatsapp = Whatsapp::find($whatsappId);
                 if ($whatsapp) {
                     $whatsapp->delete();
+                    echo "<script>alert('Whatsapp deletado com sucesso!'); </script>";
                 } else {
                     echo "<script>alert('WhatsApp não encontrado.');</script>";
                 }
@@ -140,6 +145,8 @@ class PessoaController extends Controller {
                     echo "<script>alert('Insira um whatsapp !');</script>";
                     break;
                 }
+                echo "<script>alert('Whatsapp cadastrado com sucesso.');</script>";
+
                 $this->atualizarContato(Whatsapp::class, 'whatsapp', $request->input('whatsapp'), $pessoa->id);
                 break;
 
@@ -148,6 +155,8 @@ class PessoaController extends Controller {
                     echo "<script>alert('Insira um email !');</script>";
                     break;
                 }
+                echo "<script>alert('Email cadastrado com sucesso!'); </script>";
+
                 $this->atualizarContato(Email::class, 'email', $request->input('email'), $pessoa->id);
                 break;
             case 'editar_email':
@@ -171,6 +180,7 @@ class PessoaController extends Controller {
                 $email = Email::find($emailId);
                 if ($email) {
                     $email->delete();
+                    echo "<script>alert('Email deletado com sucesso!'); </script>";
                 } else {
                     echo "<script>alert('E-mail não encontrado.');</script>";
                 }
@@ -180,10 +190,8 @@ class PessoaController extends Controller {
 
         $pessoa->update($request->only(['nome']));
         $pessoaEncontrada = $this->pessoaModel->with(['emails', 'whatsapps', 'telefones'])->get()->find($request->id);
-      
-         return view('pessoa', ['pessoaEncontrada' => $pessoaEncontrada]);
 
-
+        return view('pessoa', ['pessoaEncontrada' => $pessoaEncontrada]);
     }
 
 

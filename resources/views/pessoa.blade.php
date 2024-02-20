@@ -31,6 +31,9 @@
         height: 24px;
         max-width: 300px;
     }
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
 </style>
 
 <body>
