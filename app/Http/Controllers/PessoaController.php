@@ -67,6 +67,7 @@ class PessoaController extends Controller {
 
         $pessoa->delete();
         $pessoas = $this->pessoaModel->all();
+        echo "<script>alert('Pessoa excluida com sucesso.');</script>";
 
         return redirect()->route('home');
     }
