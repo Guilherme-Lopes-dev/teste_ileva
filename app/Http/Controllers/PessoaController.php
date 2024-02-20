@@ -34,24 +34,32 @@ class PessoaController extends Controller {
         return view('pessoa', ['pessoaEncontrada' => $pessoaEncontrada]);
     }
     public function salvar(Request $request) {
-        $pessoa = $this->pessoaModel->create($request->only(['nome', 'email', 'telefone', 'whatsapp']));
+        $data = $request->only(['nome', 'email', 'telefone', 'whatsapp']);
 
+        $pessoa = $this->pessoaModel->create($data);
 
-        $pessoa->emails()->createMany([
-            ['email' => $request->input('email')]
-        ]);
+        if ($request->filled('email')) {
+            $pessoa->emails()->createMany([
+                ['email' => $data['email']]
+            ]);
+        }
 
-        $pessoa->whatsapps()->createMany([
-            ['whatsapp' => $request->input('whatsapp')]
-        ]);
+        if ($request->filled('whatsapp')) {
+            $pessoa->whatsapps()->createMany([
+                ['whatsapp' => $data['whatsapp']]
+            ]);
+        }
 
-        $pessoa->telefones()->createMany([
-            ['telefone' => $request->input('telefone')]
-        ]);
+        if ($request->filled('telefone')) {
+            $pessoa->telefones()->createMany([
+                ['telefone' => $data['telefone']]
+            ]);
+        }
 
         $pessoas = $this->pessoaModel->all();
         return redirect()->route('home');
     }
+
 
     public function excluir(Request $request) {
 
@@ -110,7 +118,6 @@ class PessoaController extends Controller {
                 if ($telefone) {
                     $telefone->delete();
                     echo "<script>alert('Telefone deletado com sucesso.');</script>";
-
                 } else {
                     echo "<script>alert('Telefone não encontrado.');</script>";
                 }
