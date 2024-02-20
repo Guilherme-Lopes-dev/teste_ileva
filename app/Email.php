@@ -4,14 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Contato extends Model
+class Email extends Model
 {
     const UPDATED_AT = null;
     const CREATED_AT = null;
 
-    protected $fillable = ['email', 'telefone', 'whatsapp'];
+    protected $fillable = ['pessoa_id','email'];
 
-    // Adicionando a inversa do relacionamento belongsTo
     public function pessoa()
     {
         return $this->belongsTo(Pessoa::class);

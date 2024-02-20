@@ -17,12 +17,14 @@ $router->get('/', function () use ($router) {
 
 // $router->get('/teste/{id}', 'PessoaController@show');
 
-$router->get('/home', ['uses' => 'PessoaController@show', 'as' => 'home']);
+$router->get('/home', ['uses' => 'PessoaController@buscarTodos', 'as' => 'home']);
+$router->get('/pessoa/{id}', ['uses' => 'PessoaController@buscarUm', 'as' => 'pessoa']);
 $router->post('/salvar', 'PessoaController@salvar');
 $router->post('/atualizar/{id}', 'PessoaController@atualizar');
 $router->post('/excluir/{id}', 'PessoaController@excluir');
 $router->post('/pesquisar', 'PessoaController@pesquisar');
 $router->post('/validar', 'PessoaController@validarSequenciaColchetes');
+
 
 
 

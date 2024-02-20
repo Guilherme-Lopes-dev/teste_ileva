@@ -14,9 +14,18 @@ class Pessoa extends Model
         'nome'
     ];
 
-    // Adicionando o relacionamento hasMany para contatos
-    public function contatos()
+    public function emails()
     {
-        return $this->hasMany(Contato::class);
+        return $this->hasMany(Email::class, 'pessoa_id');
+    }
+
+    public function telefones()
+    {
+        return $this->hasMany(Telefone::class, 'pessoa_id');
+    }
+
+    public function whatsapps()
+    {
+        return $this->hasMany(Whatsapp::class, 'pessoa_id');
     }
 }

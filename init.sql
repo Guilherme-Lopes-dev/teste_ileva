@@ -9,12 +9,26 @@ CREATE TABLE pessoas (
 
 
 
-CREATE TABLE contatos (
+CREATE TABLE emails (
     id INT AUTO_INCREMENT PRIMARY KEY,
     pessoa_id INT,
     email VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-    telefone VARCHAR(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-    whatsapp VARCHAR(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+    FOREIGN KEY (pessoa_id) REFERENCES pessoas(id)
+    ON DELETE CASCADE
+);
+
+CREATE TABLE telefones (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    pessoa_id INT,
+    telefone VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+    FOREIGN KEY (pessoa_id) REFERENCES pessoas(id)
+    ON DELETE CASCADE
+);
+
+CREATE TABLE whatsapps (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    pessoa_id INT,
+    whatsapp VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
     FOREIGN KEY (pessoa_id) REFERENCES pessoas(id)
     ON DELETE CASCADE
 );
